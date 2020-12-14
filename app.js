@@ -10,7 +10,7 @@ const routes = require("./routes");
 const express = require("express");
 const app = express();
 database.connect();
-
+ console.log("test");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
