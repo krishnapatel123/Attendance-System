@@ -10,11 +10,10 @@ const routes = require("./routes");
 const express = require("express");
 const app = express();
 database.connect();
-
+ console.log("test1-krishna=pooja with other girls");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 app.use(cors());
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -26,7 +25,7 @@ app.response.sendJson = sendJson;
 app.use(express.static(path.join(__dirname, "public")));
 app.use('/lib', express.static(path.join(__dirname, "node_modules")));
 
-app.use("/", routes);
+app.use('/', require('./routes/webroutes/index'));
 
 // if error is not an instanceOf APIError, convert it.
 app.use(error.converter);
