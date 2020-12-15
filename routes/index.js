@@ -6,6 +6,8 @@ const { swageerOptions } = require('../config');
 
 router.get('/',(req, res, next) => res.redirect('api-docs'));
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swageerOptions));
-router.use('/auth', require("./auth"));
+
+router.use('/',require('./webroute'));
+router.use('/api',require('./api'));
 
 module.exports = router;

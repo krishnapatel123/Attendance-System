@@ -20,6 +20,7 @@
     "express": "4.17.1",
     "express-validation": "^3.0.6",
     "http-errors": "1.8.0",
+    "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
     "migrate-mongo": "^8.1.4",
     "mongoose": "^5.10.2",

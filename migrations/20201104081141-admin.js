@@ -8,8 +8,7 @@ module.exports = {
       password : "$2a$10$U.JIz8jtaejqKrJRmpq3NuzsyIHz.WxMLk42o6jLbkqsFa0alP6Fa",  // Passowrd is: 12345678
       role : role._id,
       isDeleted : false,
-      firstName : "admin",
-      lastName : "system",
+      fullName : "admin",
       email : "admin@gmail.com",
       createdAt : new Date(),
       updatedAt : new Date(),
