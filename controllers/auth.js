@@ -54,8 +54,9 @@ const ROLE = require('../models/role');
 exports.login = async (req, res, next) => {
   passport.authenticate('login', async (err, user, info) => {
     try {
+      console.log("In login");
       if (err || !user) throw new APIError({status: 401, message: err ? err.message : 'Unauthorized access'});
-
+        
       req.login(user, { session: false }, async (err) => {
         if (err) throw new APIError();
         const body = { _id: user._id, email: user.email};

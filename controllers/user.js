@@ -57,14 +57,7 @@ exports.all = async (req, res, next) => {
    * @param {*} next 
    */
 
-  // UserSchema.pre(/^findOneAndUpdate$/, async function (next) {
-  //   console.log(this.getUpdate().password);
-    // if (!this.isModified('password')) return next();
-    // const hash = await bcryptJs.hash(this.password, parseInt(bcrypt.salt));
-    // this.password = hash;
-    // console.log(this.password);
-  //   next();
-  // });
+  
   
   exports.update = async (req, res, next) => {
     try {
@@ -86,9 +79,10 @@ exports.all = async (req, res, next) => {
   exports.destroy = async (req, res, next) => {
     try {
       const _id = req.params.id;
+      console.log(_id);
       const _query = {_id, isDeleted: false};
       const _delete = {$set: {isDeleted: true}};
       await USER.findOneAndUpdate(_query, _delete);
-      return res.sendJson(200, "USER deleted successfully");
+      return res.sendJson(200, "User deleted successfully");
     } catch (error) { next(error); }
   }

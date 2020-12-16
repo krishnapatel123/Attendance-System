@@ -48,13 +48,18 @@ UserSchema.pre(/^save$/, async function (next) {
   this.password = hash;
   next();
 });
-UserSchema.pre(/^findOneAndUpdate$/,true, async function (next,done) {
-  const pass=this.getUpdate().$set.password;
-  console.log(this.getUpdate().$set.password);
-  // if(!this.isModified(pass)) return next();
-  const hash = await bcryptJs.hash(pass, parseInt(bcrypt.salt));
-  this.password = hash;
-  console.log(hash);
+
+UserSchema.pre(/^findOneAndUpdate$/, true, async function (next, done) {
+  const self = this;
+  
+  if(self.op && self.op === 'findOneAndUpdate') {
+    if(!self._update.$set.password){ done(); next(); }
+    const hash = await bcryptJs.hash(self._update.$set.password, parseInt(bcrypt.salt));
+    self._update.$set.password = hash;
+    console.log(hash);
+  }
+  
+  done();
   next();
 });
 
