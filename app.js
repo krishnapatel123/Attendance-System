@@ -12,6 +12,8 @@ const app = express();
 database.connect();
 
 console.log('krishna');
+console.log("Pooja stage");
+console.log("both");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -23,7 +25,7 @@ app.use(cookieParser());
 app.response.sendJson = sendJson;
 
 
-console.log("Pooja stage");
+
 //public path setup
 app.use(express.static(path.join(__dirname, "public")));
 app.use('/lib', express.static(path.join(__dirname, "node_modules")));
